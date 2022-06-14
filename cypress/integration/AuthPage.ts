@@ -10,6 +10,12 @@ class AuthPage {
   get logo(): Cypress.Chainable<JQuery<HTMLElement>> {
     return cy.get(".text-2xl");
   }
+  get signUpLink(): Cypress.Chainable<JQuery<HTMLElement>> {
+    return cy.get(` form > .items-center > .text-xs`);
+  }
+  get signInLink(): Cypress.Chainable<JQuery<HTMLElement>> {
+    return cy.get(`form > .items-center > .text-xs`);
+  }
   public signIn(email: string, password: string): void {
     this.signInForm.signInEmailInput.type(email);
     this.signInForm.signInPasswordInput.type(password);
@@ -21,12 +27,6 @@ class AuthPage {
     this.signUpForm.signUpPasswordInput.type(password);
     this.signUpForm.signupConfirmPasswordInput.type(password);
     this.signUpForm.signUpBtn.click();
-  }
-  get signUpLink(): Cypress.Chainable<JQuery<HTMLElement>> {
-    return cy.get(` form > .items-center > .text-xs`);
-  }
-  get signInLink(): Cypress.Chainable<JQuery<HTMLElement>> {
-    return cy.get(`form > .items-center > .text-xs`);
   }
 }
 export default new AuthPage();
